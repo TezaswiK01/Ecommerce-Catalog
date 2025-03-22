@@ -31,9 +31,17 @@ function App() {
     setSelectedCategory(categoryId ? Number(categoryId) : null);
   };
 
-  const filteredProducts = products.filter((product) => {
-    return selectedCategory ? product.category.id === selectedCategory : true;
-  });
+  const filteredProducts = products
+    .filter((product) => {
+      return selectedCategory
+        ? product.category.id === selectedCategory
+        : true && product.name.toLowerCase().includes(searchTerm.toLowerCase());
+    })
+    .sort((a, b) => {
+      if (sortOrder == "asc") return a.price - b.price;
+      else return b.price - a.price;
+    });
+
   return (
     <div className="container">
       <h1 className="my-4">Product Catalog</h1>
