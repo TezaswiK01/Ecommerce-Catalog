@@ -30,7 +30,7 @@ function App() {
   const handleCategorySelect = (categoryId) => {
     setSelectedCategory(categoryId ? Number(categoryId) : null);
   };
-
+console.log("hi")
   const filteredProducts = products
     .filter((product) => {
       return selectedCategory
